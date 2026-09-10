@@ -1,0 +1,33 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+
+    /* How dare you change my beautiful font..! */
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    
+    /* My colors too?? The audacity. */
+    background-color: black;
+    color: white;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+#text-output {
+    height: 100%;
+}
+
+#text-input {
+
+    /* You'll keep the border atleast.. right?? */
+    border-top: dashed 2px;
+    min-height: 4ch;
+    outline: none;
+}
