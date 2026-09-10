@@ -2,6 +2,7 @@
     padding: 0px;
     margin: 0px;
     width: 100%;
+    font-size: 1.1em;
 
     /* How dare you change my beautiful font..! */
     font-family: 'Courier New', Courier, monospace;
@@ -28,6 +29,11 @@ body {
 
     /* You'll keep the border atleast.. right?? */
     border-top: dashed 2px;
-    min-height: 4ch;
+    min-height: 4lh;
     outline: none;
+}
+
+#text-input:empty:before{
+    content:attr(data-flavortext);
+    filter: brightness(60%);
 }

@@ -60,7 +60,10 @@ INPUT_EL.addEventListener('keydown', (e)=>{
 
 // And make sure to handle user input!!!!!!!!!!!
 function handleInput(input) {
-    log.output(input); // Example, replace with game code.
+    // V Example V, replace with game code.
+
+    if (input.includes("/clear")) log.clear(); // Clear log by entering /clear
+    else log.output(input); // Otherwise just parrot back the text.
 }
 
 // Output Examples...
@@ -70,3 +73,4 @@ log.output("Test3")
 log.output("Test4", "yellow")
 log.output("Test5", "red")
 log.output("Test6")
+log.output('\n Hint: Try typing "/clear"', "green")
