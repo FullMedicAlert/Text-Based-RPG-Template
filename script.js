@@ -20,28 +20,31 @@ function formatLog(string) {
     let formattedText = "";
 
     for (let token of tokens) {
-        if (token.includes("\\")) {
-            let text = token.split("\\")[0];
-            let color = token.split("\\")[1];
-            console.log(color);
-            if (color.includes("!")) {
-                log.style.color = color.slice(0, color.length-1);
-            } else {
-                token = `<span style="color: ${color};">${text}</span>`;
+        let assembledText = token;
+
+        if (token.includes("|")) {
+            assembledText = ""
+            subTokens = token.split("|");
+
+            let text = []
+            let colors = []
+            for (let subToken of subTokens) {
+                text.push(subTokens.shift());
+                colors.push(subTokens.shift());
+            }
+
+            for (let i = 0; i < text.length; i++) {
+                if (colors[i].includes("!")) {
+                    log.style.color = colors[i].slice(0, colors[i].length-1);
+                } else {
+                    assembledText += `<span style="color: ${colors[i]};">${text[i]}</span>`;
+                }
             }
         }
-        if (token.includes("\\")) {
-            let text = token.split("\\")[0];
-            let color = token.split("\\")[1];
-            console.log(text);
-
-            token = text;
-        }
-        formattedText += ( (tokens.indexOf(token) === 0) ? "" : " ") + token;
+        formattedText += ( (tokens.indexOf(token) === 0) ? "" : " ") + assembledText;
     }
 
     log.innerHTML = formattedText;
-
     return log;
 }
 
@@ -102,11 +105,11 @@ function handleInput(input) {
 
 // Output Examples...
 log.output("Test0")
-log.output("Test1\\lime\\ is Green\\green\\")
+log.output("Test1|lime| is Green|green|")
 log.output("Test2")
-log.output("Test3\\yellow\\ shines golden")
-log.output("Test4\\red\\ is red with anger!")
-log.output("Test5's whole line is blue! \\blue!\\")
-log.output("Test\\red\\ 6\\orange\\ is\\yellow\\ a\\green\\ rain\\blue\\ bow\\violet\\ !!\\purple\\") //should be able to switch colors without space
-log.output("");
-log.output('Hint: Try typing "/clear" \\green!\\') 
+log.output("Test3|yellow| shines golden")
+log.output("Test4|red| is red with anger!")
+log.output("Test5's whole line is blue! |blue!|")
+log.output("Test|red|6|orange| is|yellow| a|green| rain|blue|bow|violet|!!|purple|") //should be able to switch colors without space
+log.output("\|");
+log.output('Hint: Try typing "/clear" |green!|') 
