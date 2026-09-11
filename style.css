@@ -2,7 +2,7 @@
     padding: 0px;
     margin: 0px;
     width: 100%;
-    font-size: 1.1em;
+    font-size: 14pt;
 
     /* How dare you change my beautiful font..! */
     font-family: 'Courier New', Courier, monospace;
@@ -36,4 +36,8 @@ body {
 #text-input:empty:before{
     content:attr(data-flavortext);
     filter: brightness(60%);
+}
+
+.log {
+    min-height: 1lh;
 }
